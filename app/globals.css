@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #FFFFFF;
+  --soft: #F8F8F8;
+  --fg: #222222;
+  --mut: #7B7B7B;
+  --line: rgba(34, 34, 34, 0.12);
+}
+
+.dark {
+  --bg: #0D0D0D;
+  --soft: #151515;
+  --fg: #F8F8F8;
+  --mut: #7B7B7B;
+  --line: rgba(248, 248, 248, 0.14);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  transition: background-color 0.5s ease, color 0.5s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: #7B7B7B; border-radius: 99px; }
+
+.text-outline {
+  -webkit-text-stroke: 1.5px var(--fg);
+  color: transparent;
+}
+
+.bg-grid {
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+.link-sweep {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.4s ease;
+}
+.link-sweep:hover { background-size: 100% 1px; }
+
+.nav-blur {
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+}
