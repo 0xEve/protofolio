@@ -1,6 +1,4 @@
-// ============================================================
-// كل بيانات الموقع هنا — عدّل أي قيمة وهتظهر فورًا
-// ============================================================
+
 
 export const profile = {
   name: "Abdelrhman Islam",
@@ -19,17 +17,15 @@ export const profile = {
   availability: "Open to internships & opportunities",
   resumeUrl: "/resume.pdf",
 
-  // حدّث رابط LinkedIn هنا لو مختلف
   socials: [
     { label: "GitHub", icon: "github", url: "https://github.com/Abdelrhman333" },
-    { label: "LinkedIn", icon: "linkedin", url: "https://www.linkedin.com/in/abdelrhman-islam" },
+    { label: "LinkedIn", icon: "linkedin", url: "https://www.linkedin.com/in/abdelrhman-lslam" },
     { label: "Email", icon: "mail", url: "mailto:abdelrhman.ev@gmail.com" },
   ],
 
   stats: [
-    { value: 90, suffix: "%", label: "Token cost cut by EVHunter" },
-    { value: 89, suffix: "%", label: "ML model accuracy" },
-    { value: 4, suffix: "", label: "Certifications earned" },
+    { value: 94, suffix: "%", label: "ML model accuracy" }, // TODO: update once you retrain on your real spam.csv
+    { value: 4, suffix: "", label: "Certifications earned and training" },
     { value: 2, suffix: "", label: "Projects built & shipped" },
   ],
 
@@ -51,13 +47,14 @@ export const profile = {
       link: "https://github.com/Abdelrhman333/Ev_Hunter",
     },
     {
-      title: "House Price Prediction",
+      title: "Spam Email Detector",
       category: "Machine Learning",
-      year: "2025",
+      year: "2026",
       description:
-        "Built and trained a regression model to predict house prices, achieving 89% accuracy using NumPy, Pandas, and Scikit-learn.",
-      stack: ["Python", "Scikit-learn", "Pandas", "NumPy"],
-      link: "https://github.com/Abdelrhman333",
+        "A TF-IDF + Multinomial Naive Bayes classifier that flags spam vs. legitimate messages in real time, wrapped in a Flask API with a live-testing web UI.",
+      stack: ["Python", "Flask", "Scikit-learn", "TF-IDF", "Naive Bayes"],
+      link: "https://github.com/Abdelrhman333/spam_detection", // TODO: point at the actual repo for this project
+      demo: true,
     },
   ],
 
@@ -87,7 +84,7 @@ export const profile = {
     },
     {
       title: "Engineering",
-      items: ["C++", "Bash", "PHP", "Git & GitHub", "Google Colab"],
+      items: ["C++", "Bash", "PHP", "Git & GitHub", "Google Colab", "kaggle"],
     },
   ],
 
