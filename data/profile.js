@@ -18,7 +18,7 @@ export const profile = {
   resumeUrl: "/resume.pdf",
 
   socials: [
-    { label: "GitHub", icon: "github", url: "https://github.com/Abdelrhman333" },
+    { label: "GitHub", icon: "github", url: "https://github.com/0xEve" },
     { label: "LinkedIn", icon: "linkedin", url: "https://www.linkedin.com/in/abdelrhman-lslam" },
     { label: "Email", icon: "mail", url: "mailto:abdelrhman.ev@gmail.com" },
   ],
@@ -44,7 +44,7 @@ export const profile = {
       description:
         "A CLI-based, AI-powered bug-hunting framework that fuses industry-standard recon tools — Nmap, Subfinder, Nuclei — with AI-driven analysis to find and verify vulnerabilities. A token-optimized pipeline sends compact JSON instead of raw output, cutting token usage by 80–90%, with automated PoC verification and AI-generated Markdown/HTML reports.",
       stack: ["Python", "Nmap", "Subfinder", "Nuclei", "SQLite", "CLI"],
-      link: "https://github.com/Abdelrhman333/Ev_Hunter",
+      link: "https://github.com/0xEve/Ev_Hunter",
     },
     {
       title: "Spam Email Detector",
@@ -53,7 +53,7 @@ export const profile = {
       description:
         "A TF-IDF + Multinomial Naive Bayes classifier that flags spam vs. legitimate messages in real time, wrapped in a Flask API with a live-testing web UI.",
       stack: ["Python", "Flask", "Scikit-learn", "TF-IDF", "Naive Bayes"],
-      link: "https://github.com/Abdelrhman333/spam_detection", // TODO: point at the actual repo for this project
+      link: "https://github.com/0xEve/spam_detection", // TODO: point at the actual repo for this project
       demo: true,
     },
   ],
