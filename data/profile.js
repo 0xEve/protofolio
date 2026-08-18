@@ -42,7 +42,7 @@ export const profile = {
       category: "Security Tooling",
       year: "2026",
       description:
-        "A CLI-based, AI-powered bug-hunting framework that fuses industry-standard recon tools — Nmap, Subfinder, Nuclei — with AI-driven analysis to find and verify vulnerabilities. A token-optimized pipeline sends compact JSON instead of raw output, cutting token usage by 80–90%, with automated PoC verification and AI-generated Markdown/HTML reports.",
+        "A CLI-based, AI-powered bug-hunting framework that fuses industry-standard recon tools — Nmap, Subfinder, Nuclei — with AI-driven analysis to find and verify vulnerabilities. A token-optimized pipeline sends compact JSON instead of raw output, with automated PoC verification and AI-generated Markdown/HTML reports.",
       stack: ["Python", "Nmap", "Subfinder", "Nuclei", "SQLite", "CLI"],
       link: "https://github.com/0xEve/Ev_Hunter",
     },
