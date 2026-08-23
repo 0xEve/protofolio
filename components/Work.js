@@ -5,9 +5,6 @@ import { profile } from "@/data/profile";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
-// Set once app.py is deployed somewhere public (Render, Railway,
-// PythonAnywhere, Hugging Face Spaces...). "Try it" opens that real,
-// separately-hosted app directly — no embedding, no in-site routing.
 const SPAM_DEMO_URL = process.env.NEXT_PUBLIC_SPAM_DEMO_URL || "";
 
 function Cover({ index }) {

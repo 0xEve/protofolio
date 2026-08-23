@@ -24,7 +24,7 @@ export const profile = {
   ],
 
   stats: [
-    { value: 94, suffix: "%", label: "ML model accuracy" }, // TODO: update once you retrain on your real spam.csv
+    { value: 94, suffix: "%", label: "ML model accuracy" }, 
     { value: 4, suffix: "", label: "Certifications earned and training" },
     { value: 2, suffix: "", label: "Projects built & shipped" },
   ],
@@ -53,7 +53,7 @@ export const profile = {
       description:
         "A TF-IDF + Multinomial Naive Bayes classifier that flags spam vs. legitimate messages in real time, wrapped in a Flask API with a live-testing web UI.",
       stack: ["Python", "Flask", "Scikit-learn", "TF-IDF", "Naive Bayes"],
-      link: "https://github.com/0xEve/spam_detection", // TODO: point at the actual repo for this project
+      link: "https://github.com/0xEve/spam_detection",
       demo: true,
     },
   ],

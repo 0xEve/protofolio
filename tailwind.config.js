@@ -10,6 +10,7 @@ module.exports = {
         fg: "var(--fg)",
         mut: "var(--mut)",
         line: "var(--line)",
+        accent: "var(--accent)",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],

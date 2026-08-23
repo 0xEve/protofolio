@@ -17,14 +17,9 @@ export const metadata = {
   },
 };
 
-const themeScript = `(function(){try{if(localStorage.getItem("theme")==="dark"){document.documentElement.classList.add("dark")}}catch(e){}})()`;
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
       <body className={`${display.variable} ${body.variable} ${mono.variable} font-body antialiased`}>
         <Providers>
           <ScrollProgress />

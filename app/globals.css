@@ -3,19 +3,23 @@
 @tailwind utilities;
 
 :root {
-  --bg: #FFFFFF;
-  --soft: #F8F8F8;
-  --fg: #222222;
-  --mut: #7B7B7B;
-  --line: rgba(34, 34, 34, 0.12);
-}
-
-.dark {
+  color-scheme: dark;
   --bg: #0D0D0D;
   --soft: #151515;
   --fg: #F8F8F8;
   --mut: #7B7B7B;
   --line: rgba(248, 248, 248, 0.14);
+  --accent: #00E5FF;
+}
+
+html.light {
+  color-scheme: light;
+  --bg: #F4F4F2;
+  --soft: #EBEBE8;
+  --fg: #121212;
+  --mut: #6A6965;
+  --line: rgba(18, 18, 18, 0.16);
+  --accent: #007A99;
 }
 
 html {
@@ -62,4 +66,14 @@ body {
 
 .nav-blur {
   background: color-mix(in srgb, var(--bg) 82%, transparent);
+}
+
+.neon-text {
+  text-shadow: 0 0 12px color-mix(in srgb, var(--accent) 60%, transparent);
+}
+
+.cli-ring {
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--accent) 45%, transparent),
+    0 0 22px color-mix(in srgb, var(--accent) 16%, transparent);
 }

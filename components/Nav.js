@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Menu, X, Moon, Sun, ArrowUpRight } from "lucide-react";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { profile } from "@/data/profile";
+import Cli from "@/components/Cli";
 
 const links = [
   { label: "Work", href: "#work" },
@@ -14,23 +15,14 @@ const links = [
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
-  const [dark, setDark] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    setDark(document.documentElement.classList.contains("dark"));
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  const toggleTheme = () => {
-    const next = !dark;
-    setDark(next);
-    document.documentElement.classList.toggle("dark", next);
-    localStorage.setItem("theme", next ? "dark" : "light");
-  };
 
   return (
     <>
@@ -65,23 +57,7 @@ export default function Nav() {
           </div>
 
           <div className="flex items-center gap-3">
-            <button
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-              className="w-9 h-9 grid place-items-center border border-line hover:border-fg transition-colors"
-            >
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.span
-                  key={dark ? "sun" : "moon"}
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {dark ? <Sun size={16} /> : <Moon size={16} />}
-                </motion.span>
-              </AnimatePresence>
-            </button>
+            <Cli />
             <button
               onClick={() => setOpen(true)}
               aria-label="Open menu"
