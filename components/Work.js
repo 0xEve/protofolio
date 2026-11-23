@@ -5,27 +5,17 @@ import { profile } from "@/data/profile";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
-const SPAM_DEMO_URL = process.env.NEXT_PUBLIC_SPAM_DEMO_URL || "";
-
-function Cover({ index }) {
+function Cover({ project }) {
   return (
-    <div className="relative aspect-[16/10] overflow-hidden bg-soft transition-colors duration-500">
-      <div className="absolute inset-0 bg-grid opacity-50" />
-
-      <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.05]">
-        <span className="absolute -bottom-6 left-2 font-display font-extrabold text-[8rem] md:text-[11rem] leading-none text-outline select-none">
-          0{index}
-        </span>
-
-        <span className="absolute -top-16 -right-12 w-56 h-56 md:w-72 md:h-72 rounded-full border border-line" />
-
-        <span className="absolute top-10 right-24 w-16 h-16 md:w-20 md:h-20 bg-fg transition-transform duration-700 group-hover:rotate-45" />
+    <figure className="bg-soft">
+      <div className="aspect-[16/10] overflow-hidden">
+        <img src={project.image} alt={project.imageAlt} width="1200" height="750"
+          loading="lazy" className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.025]" />
       </div>
-
-      <span className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.3em] text-mut">
-        Case study
-      </span>
-    </div>
+      <figcaption className="border-t border-line px-4 py-3 text-xs leading-relaxed text-mut">
+        {project.imageCaption}
+      </figcaption>
+    </figure>
   );
 }
 
@@ -58,7 +48,7 @@ export default function Work() {
                     i % 2 === 1 ? "md:order-2" : ""
                   }`}
                 >
-                  <Cover index={i + 1} />
+                  <Cover project={p} />
                 </a>
 
                 {/* Project Information */}
@@ -83,6 +73,10 @@ export default function Work() {
                     {p.description}
                   </p>
 
+                  <ul className="mt-5 space-y-2 text-sm leading-relaxed">
+                    {p.highlights?.map((item) => <li key={item} className="flex gap-3"><span aria-hidden="true" className="text-mut">+</span>{item}</li>)}
+                  </ul>
+                  <p className="mt-5 border-l border-line pl-4 text-xs leading-relaxed text-mut">{p.note}</p>
                   {/* Tech Stack */}
                   <div className="mt-6 flex flex-wrap gap-2">
                     {p.stack.map((t) => (
@@ -111,9 +105,9 @@ export default function Work() {
                       />
                     </a>
 
-                    {p.demo && SPAM_DEMO_URL && (
+                    {p.demo && (
                       <a
-                        href={SPAM_DEMO_URL}
+                        href={p.demo}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 bg-fg text-bg px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.25em] hover:opacity-85 transition-opacity"
