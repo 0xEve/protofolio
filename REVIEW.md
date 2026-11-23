@@ -35,3 +35,5 @@ No CV, contact details, qualifications, project outcomes or model scores were in
 - Replaced the EVHunter CLI screenshot with a native monochrome workflow overview, explicitly labeled as an overview rather than a scan result. The original screenshot remains unused in assets.
 - Reworked Who I Am into a shorter student bio with smaller type, quiet focus/learning details and no numeric sidebar.
 - Preserved production unchanged.
+
+- After further owner feedback, replaced the Spam Detector screenshot with a native text-classification diagram. It shows the real TF-IDF/Naive Bayes approach and two labels, not a sample prediction or claimed result. Both previous screenshots remain unused assets.
