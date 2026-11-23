@@ -21,6 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${display.variable} ${body.variable} ${mono.variable} font-body antialiased`}>
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <Providers>
           <ScrollProgress />
           <Nav />

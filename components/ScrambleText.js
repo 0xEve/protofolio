@@ -1,12 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
 
+import { useReducedMotion } from "framer-motion";
+
 const GLYPHS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@&%";
 
 export default function ScrambleText({ text, delay = 0, className = "" }) {
-  const [output, setOutput] = useState("");
+  const [output, setOutput] = useState(text);
 
+  const reducedMotion = useReducedMotion();
   useEffect(() => {
+    if (reducedMotion) { setOutput(text); return; }
     let raf;
     const start = performance.now() + delay;
     const perChar = 45;
@@ -26,7 +30,7 @@ export default function ScrambleText({ text, delay = 0, className = "" }) {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [text, delay]);
+  }, [text, delay, reducedMotion]);
 
-  return <span className={className}>{output || "\u00A0"}</span>;
+  return <span className={className} aria-label={text}><span aria-hidden="true">{output}</span></span>;
 }

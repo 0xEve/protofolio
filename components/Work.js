@@ -1,31 +1,60 @@
 "use client";
 
-import { ArrowUpRight, Play } from "lucide-react";
+import { ArrowUpRight, Play, Terminal, ArrowDown } from "lucide-react";
 import { profile } from "@/data/profile";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
-const SPAM_DEMO_URL = process.env.NEXT_PUBLIC_SPAM_DEMO_URL || "";
-
-function Cover({ index }) {
-  return (
-    <div className="relative aspect-[16/10] overflow-hidden bg-soft transition-colors duration-500">
-      <div className="absolute inset-0 bg-grid opacity-50" />
-
-      <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-[1.05]">
-        <span className="absolute -bottom-6 left-2 font-display font-extrabold text-[8rem] md:text-[11rem] leading-none text-outline select-none">
-          0{index}
-        </span>
-
-        <span className="absolute -top-16 -right-12 w-56 h-56 md:w-72 md:h-72 rounded-full border border-line" />
-
-        <span className="absolute top-10 right-24 w-16 h-16 md:w-20 md:h-20 bg-fg transition-transform duration-700 group-hover:rotate-45" />
+function Cover({ project }) {
+  if (project.title === "EVHunter") return (
+    <figure className="bg-bg p-6 md:p-8">
+      <div className="flex items-center justify-between border-b border-line pb-5">
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-mut">EVHunter / workflow</span>
+        <Terminal size={16} strokeWidth={1.25} className="text-mut" aria-hidden="true" />
       </div>
-
-      <span className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-[0.3em] text-mut">
-        Case study
-      </span>
-    </div>
+      <div className="py-5 md:py-7">
+        {[
+          ["01", "Recon", "Nmap · Subfinder · Nuclei"],
+          ["02", "Analyze & verify", "Compact JSON · AI-assisted analysis"],
+          ["03", "Review & report", "SQLite history · Markdown / HTML"],
+        ].map(([number, title, detail], i) => (
+          <div key={number}>
+            <div className="flex items-start gap-4 py-3">
+              <span className="pt-1 font-mono text-[10px] text-mut">{number}</span>
+              <div>
+                <div className="font-display text-xl md:text-2xl tracking-tight">{title}</div>
+                <div className="mt-1 font-mono text-[9px] md:text-[10px] leading-relaxed text-mut">{detail}</div>
+              </div>
+            </div>
+            {i < 2 && <ArrowDown size={12} strokeWidth={1} className="ml-[29px] text-mut" aria-hidden="true" />}
+          </div>
+        ))}
+      </div>
+      <figcaption className="border-t border-line pt-4 font-mono text-[9px] uppercase tracking-[0.16em] leading-relaxed text-mut">
+        Project overview / not a scan result
+      </figcaption>
+    </figure>
+  );
+  return (
+    <figure className="bg-bg p-6 md:p-8">
+      <div className="flex items-center justify-between border-b border-line pb-5 font-mono text-[10px] uppercase tracking-[0.2em] text-mut">
+        <span>Text classification</span><span aria-hidden="true">Aa</span>
+      </div>
+      <div className="py-7 md:py-9">
+        <div className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">One message.<br /><span className="text-mut">Two classes.</span></div>
+        <div className="mt-7 border border-line p-4" aria-label="Message represented as text lines">
+          <span className="block h-px w-4/5 bg-mut opacity-60" />
+          <span className="mt-3 block h-px w-full bg-mut opacity-40" />
+          <span className="mt-3 block h-px w-3/5 bg-mut opacity-40" />
+        </div>
+        <div className="py-4 text-center font-mono text-[9px] uppercase tracking-[0.12em] leading-relaxed text-mut">TF-IDF / Naive Bayes</div>
+        <div className="grid grid-cols-2 border border-line font-mono text-[10px] uppercase tracking-[0.15em]">
+          <div className="border-r border-line p-4 text-center">Spam</div>
+          <div className="p-4 text-center">Not spam</div>
+        </div>
+      </div>
+      <figcaption className="border-t border-line pt-4 font-mono text-[9px] uppercase tracking-[0.16em] leading-relaxed text-mut">Model overview / not a live prediction</figcaption>
+    </figure>
   );
 }
 
@@ -58,7 +87,7 @@ export default function Work() {
                     i % 2 === 1 ? "md:order-2" : ""
                   }`}
                 >
-                  <Cover index={i + 1} />
+                  <Cover project={p} />
                 </a>
 
                 {/* Project Information */}
@@ -83,6 +112,10 @@ export default function Work() {
                     {p.description}
                   </p>
 
+                  <ul className="mt-5 space-y-2 text-sm leading-relaxed">
+                    {p.highlights?.map((item) => <li key={item} className="flex gap-3"><span aria-hidden="true" className="text-mut">+</span>{item}</li>)}
+                  </ul>
+                  <p className="mt-5 border-l border-line pl-4 text-xs leading-relaxed text-mut">{p.note}</p>
                   {/* Tech Stack */}
                   <div className="mt-6 flex flex-wrap gap-2">
                     {p.stack.map((t) => (
@@ -111,9 +144,9 @@ export default function Work() {
                       />
                     </a>
 
-                    {p.demo && SPAM_DEMO_URL && (
+                    {p.demo && (
                       <a
-                        href={SPAM_DEMO_URL}
+                        href={p.demo}
                         target="_blank"
                         rel="noreferrer"
                         className="inline-flex items-center gap-2 bg-fg text-bg px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.25em] hover:opacity-85 transition-opacity"
