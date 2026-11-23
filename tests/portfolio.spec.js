@@ -12,6 +12,9 @@ for (const width of [320,390,768,1280]) {
     await page.screenshot({path:`${output}/portfolio-about-${width}.png`});
     await page.locator('#work').evaluate(el=>el.scrollIntoView({block:'start',behavior:'instant'}));
     await expect(page.getByRole('heading',{name:'EVHunter',exact:true})).toBeVisible();
+    await expect(page.getByText('EVHunter / workflow',{exact:true})).toBeVisible();
+    await expect(page.getByText('Project overview / not a scan result',{exact:true})).toBeVisible();
+    await expect(page.locator('#work img[src="/projects/evhunter.png"]')).toHaveCount(0);
     await expect(page.getByRole('link',{name:'Try it',exact:true})).toHaveAttribute('href','https://spam-detection-sigma-seven.vercel.app/');
     for (const img of await page.locator('#work img').all()) expect(await img.evaluate(el=>el.complete && el.naturalWidth>0)).toBe(true);
     await page.screenshot({path:`${output}/portfolio-work-${width}.png`});
