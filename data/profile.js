@@ -9,7 +9,7 @@ export const profile = {
   tagline:
     "Computer Science student who hunts vulnerabilities in web apps and trains machine learning models — security mindset, engineering discipline.",
   about:
-    "I'm a second-year Computer Science student at Benha National University, focused on cybersecurity and web application penetration testing, with hands-on experience in machine learning. Linux is my daily driver, Burp Suite is my workspace, and I've built and shipped EVHunter — an AI-augmented bug-hunting framework. Right now I'm going deeper into deep learning with PyTorch, and looking for internships where I can apply and grow these skills.",
+    "I'm Abdelrhman, a Computer Science student at Benha National University. I focus on web application security and build projects in Python, from security tooling to machine learning. I'm still learning, and I like turning what I study into something I can test and improve.",
   location: "Benha, Egypt",
   timezone: "Africa/Cairo",
   email: "abdelrhman.ev@gmail.com",
