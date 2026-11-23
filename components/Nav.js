@@ -3,7 +3,6 @@ import { useEffect, useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { profile } from "@/data/profile";
-import Cli from "@/components/Cli";
 
 const links = [
   { label: "Work", href: "#work" },
@@ -80,8 +79,7 @@ export default function Nav() {
             ))}
           </div>
 
-          <div className="flex items-center gap-3">
-            <Cli />
+          <div className="flex md:hidden items-center gap-3">
             <button
               ref={menuButton}
               aria-expanded={open}
