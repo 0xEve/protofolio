@@ -37,3 +37,5 @@ No CV, contact details, qualifications, project outcomes or model scores were in
 - Preserved production unchanged.
 
 - After further owner feedback, replaced the Spam Detector screenshot with a native text-classification diagram. It shows the real TF-IDF/Naive Bayes approach and two labels, not a sample prediction or claimed result. Both previous screenshots remain unused assets.
+
+- Removed the mounted header terminal component, including desktop input, mobile command entry and slash-key listener. Normal desktop and mobile navigation remain.
