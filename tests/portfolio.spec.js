@@ -6,6 +6,10 @@ for (const width of [320,390,768,1280]) {
     const errors=[]; page.on('pageerror',e=>errors.push(e.message));
     await page.setViewportSize({width,height:900}); await page.goto('/');
     await expect(page.getByRole('heading',{name:'Abdelrhman Islam',exact:true})).toBeVisible();
+    await expect(page.getByRole('textbox',{name:'Command line',exact:true})).toHaveCount(0);
+    await expect(page.getByRole('button',{name:'Open command menu',exact:true})).toHaveCount(0);
+    await page.keyboard.press('/');
+    await expect(page.getByRole('dialog',{name:'Command menu',exact:true})).toHaveCount(0);
     await page.locator('#about').scrollIntoViewIfNeeded();
     const paragraph=page.locator('#about p').first(); await expect(paragraph).toBeVisible();
     expect(await paragraph.evaluate(el=>getComputedStyle(el).opacity)).toBe('1');
