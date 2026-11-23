@@ -36,14 +36,24 @@ function Cover({ project }) {
     </figure>
   );
   return (
-    <figure className="bg-soft">
-      <div className="aspect-[16/10] overflow-hidden">
-        <img src={project.image} alt={project.imageAlt} width="1200" height="750"
-          loading="lazy" className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-[1.025]" />
+    <figure className="bg-bg p-6 md:p-8">
+      <div className="flex items-center justify-between border-b border-line pb-5 font-mono text-[10px] uppercase tracking-[0.2em] text-mut">
+        <span>Text classification</span><span aria-hidden="true">Aa</span>
       </div>
-      <figcaption className="border-t border-line px-4 py-3 text-xs leading-relaxed text-mut">
-        {project.imageCaption}
-      </figcaption>
+      <div className="py-7 md:py-9">
+        <div className="font-display text-4xl md:text-5xl tracking-tight leading-[1.05]">One message.<br /><span className="text-mut">Two classes.</span></div>
+        <div className="mt-7 border border-line p-4" aria-label="Message represented as text lines">
+          <span className="block h-px w-4/5 bg-mut opacity-60" />
+          <span className="mt-3 block h-px w-full bg-mut opacity-40" />
+          <span className="mt-3 block h-px w-3/5 bg-mut opacity-40" />
+        </div>
+        <div className="py-4 text-center font-mono text-[9px] uppercase tracking-[0.12em] leading-relaxed text-mut">TF-IDF / Naive Bayes</div>
+        <div className="grid grid-cols-2 border border-line font-mono text-[10px] uppercase tracking-[0.15em]">
+          <div className="border-r border-line p-4 text-center">Spam</div>
+          <div className="p-4 text-center">Not spam</div>
+        </div>
+      </div>
+      <figcaption className="border-t border-line pt-4 font-mono text-[9px] uppercase tracking-[0.16em] leading-relaxed text-mut">Model overview / not a live prediction</figcaption>
     </figure>
   );
 }
