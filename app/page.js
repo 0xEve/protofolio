@@ -10,7 +10,7 @@ import { profile } from "@/data/profile";
 
 export default function Page() {
   return (
-    <main>
+    <main id="main-content" tabIndex={-1}>
       <Hero />
       <Marquee items={profile.marquee} />
       <About />
