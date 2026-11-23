@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { profile } from "@/data/profile";
@@ -14,6 +14,9 @@ const links = [
 ];
 
 export default function Nav() {
+  const menuButton = useRef(null);
+  const closeButton = useRef(null);
+  const dialog = useRef(null);
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -24,10 +27,31 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!open) return;
+    const oldOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeButton.current?.focus();
+    const onKey = (event) => {
+      if (event.key === "Escape") setOpen(false);
+      if (event.key !== "Tab") return;
+      const items = [...dialog.current.querySelectorAll('a[href], button')];
+      const first = items[0], last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = oldOverflow;
+      document.removeEventListener("keydown", onKey);
+      menuButton.current?.focus();
+    };
+  }, [open]);
+
   return (
     <>
       <motion.header
-        initial={{ y: -80, opacity: 0 }}
+        initial={false}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
@@ -59,6 +83,9 @@ export default function Nav() {
           <div className="flex items-center gap-3">
             <Cli />
             <button
+              ref={menuButton}
+              aria-expanded={open}
+              aria-controls="mobile-navigation"
               onClick={() => setOpen(true)}
               aria-label="Open menu"
               className="md:hidden w-9 h-9 grid place-items-center border border-line"
@@ -72,6 +99,7 @@ export default function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
+            ref={dialog} id="mobile-navigation" role="dialog" aria-modal="true" aria-label="Navigation menu"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -81,6 +109,7 @@ export default function Nav() {
             <div className="h-16 px-6 flex items-center justify-between border-b border-line">
               <span className="font-mono text-xs uppercase tracking-[0.25em]">Menu</span>
               <button
+                ref={closeButton}
                 onClick={() => setOpen(false)}
                 aria-label="Close menu"
                 className="w-9 h-9 grid place-items-center border border-line"
