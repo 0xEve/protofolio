@@ -30,3 +30,8 @@ This draft does not change production. Review before merge or deployment.
 
 ## Not changed
 No CV, contact details, qualifications, project outcomes or model scores were invented or updated. No changes to either project repository. No main-branch push or production deployment.
+
+## Revision after owner feedback
+- Replaced the EVHunter CLI screenshot with a native monochrome workflow overview, explicitly labeled as an overview rather than a scan result. The original screenshot remains unused in assets.
+- Reworked Who I Am into a shorter student bio with smaller type, quiet focus/learning details and no numeric sidebar.
+- Preserved production unchanged.
