@@ -1,11 +1,40 @@
 "use client";
 
-import { ArrowUpRight, Play } from "lucide-react";
+import { ArrowUpRight, Play, Terminal, ArrowDown } from "lucide-react";
 import { profile } from "@/data/profile";
 import SectionHeading from "./SectionHeading";
 import Reveal from "./Reveal";
 
 function Cover({ project }) {
+  if (project.title === "EVHunter") return (
+    <figure className="bg-bg p-6 md:p-8">
+      <div className="flex items-center justify-between border-b border-line pb-5">
+        <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-mut">EVHunter / workflow</span>
+        <Terminal size={16} strokeWidth={1.25} className="text-mut" aria-hidden="true" />
+      </div>
+      <div className="py-5 md:py-7">
+        {[
+          ["01", "Recon", "Nmap · Subfinder · Nuclei"],
+          ["02", "Analyze & verify", "Compact JSON · AI-assisted analysis"],
+          ["03", "Review & report", "SQLite history · Markdown / HTML"],
+        ].map(([number, title, detail], i) => (
+          <div key={number}>
+            <div className="flex items-start gap-4 py-3">
+              <span className="pt-1 font-mono text-[10px] text-mut">{number}</span>
+              <div>
+                <div className="font-display text-xl md:text-2xl tracking-tight">{title}</div>
+                <div className="mt-1 font-mono text-[9px] md:text-[10px] leading-relaxed text-mut">{detail}</div>
+              </div>
+            </div>
+            {i < 2 && <ArrowDown size={12} strokeWidth={1} className="ml-[29px] text-mut" aria-hidden="true" />}
+          </div>
+        ))}
+      </div>
+      <figcaption className="border-t border-line pt-4 font-mono text-[9px] uppercase tracking-[0.16em] leading-relaxed text-mut">
+        Project overview / not a scan result
+      </figcaption>
+    </figure>
+  );
   return (
     <figure className="bg-soft">
       <div className="aspect-[16/10] overflow-hidden">
